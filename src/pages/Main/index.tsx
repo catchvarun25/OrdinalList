@@ -16,8 +16,6 @@ const Main = () => {
     const dispatch = useDispatch()
     const ordinals = useSelector((state: any) => state.ordinals)
 
-    console.log("ordinals", ordinals)
-
     const lookup = (offset = 30, limit = 30) => {
         dispatch({ type: "FETCH_ORDINALS", payload: { walletAddress, offset, limit } });
     }

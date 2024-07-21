@@ -7,7 +7,6 @@ function* fetchOrdinals({
     payload,
 }: any): Generator<CallEffect<ApiResponse> | PutEffect<any> | CallEffect> {
     try {
-        payload.walletAddress = "bc1pe6y27ey6gzh6p0j250kz23zra7xn89703pvmtzx239zzstg47j3s3vdvvs"
         const response: any = yield call(ApiClient, ordinalListApi(payload.walletAddress, payload.offset = 30, payload.limit = 30))
         const data = response.data;
         yield put({
