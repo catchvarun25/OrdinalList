@@ -5906,11 +5906,6 @@ react-native-devsettings@^1.0.5:
   resolved "https://registry.npmjs.org/react-native-devsettings/-/react-native-devsettings-1.0.5.tgz"
   integrity sha512-JFdE3/oqIqtAi1HgdseMB+zRHVG9CQpsxMUVd+GXmaQQIyY+Kh2bWB3wdSA8+ojTunaahZkvb9fIFRrLUWdROQ==
 
-react-native-flipper@^0.212.0:
-  version "0.212.0"
-  resolved "https://registry.npmjs.org/react-native-flipper/-/react-native-flipper-0.212.0.tgz"
-  integrity sha512-bDRfIgE3v/jjEEdnvGP0T6maDD+bXhDAQ/SZUYTKd/CQ6YIU1c0EF+e0urU62LNMv6XEFQKz226McdddyVhYZA==
-
 react-native-gesture-handler@^2.17.1:
   version "2.17.1"
   resolved "https://registry.npmjs.org/react-native-gesture-handler/-/react-native-gesture-handler-2.17.1.tgz"
