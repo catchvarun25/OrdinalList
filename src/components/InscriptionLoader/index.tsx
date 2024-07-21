@@ -24,31 +24,24 @@ const InscriptionLoader: React.FC<ContentLoaderProps> = ({ url, isContentTypeTex
             }
         };
 
-        fetchData();
-    }, [url]);
+        isContentTypeText && fetchData();
+    }, [isContentTypeText]);
 
-    if (loading) {
-        return (
-            <View style={styles.loadingContainer}>
-                <ActivityIndicator size="large" color="#0000ff" />
-            </View>
-        );
-    }
 
-    console.log(url)
+
 
     return (
         <View style={styles.container}>
             {textContent && isContentTypeText && <Text style={styles.text}>{textContent}</Text>}
-            <Image
+            {!isContentTypeText && <Image
                 style={{
-                    width: 300,
-                    height: 500,
+                    minWidth: 300,
+                    height: 300,
                 }}
                 source={{
                     uri: url,
                 }}
-            />
+            />}
         </View>
     );
 };

@@ -10,35 +10,19 @@ const Image = lazy(() => import("./../../components/IconComponent"))
 const Main = () => {
     const navigation = useNavigation();
     const [walletAddress, setWalletAddress] = useState('')
-    const [isLoading, setIsLoading] = useState(false);
     const [page, setPage] = useState(1);
-    const [isRefreshing, setIsRefreshing] = useState(false);
     const dispatch = useDispatch()
     const ordinals = useSelector((state: any) => state.ordinals)
 
-    const lookup = (offset = 30, limit = 30) => {
+    const lookup = (offset = 0, limit = 9) => {
         dispatch({ type: "FETCH_ORDINALS", payload: { walletAddress, offset, limit } });
     }
 
     const handleLoadMore = () => {
-        setPage(page + 1);
+        let pageValue = page + 1;
+        setPage(pageValue);
+        lookup(pageValue)
     };
-
-    const handleRefresh = () => {
-        dispatch({ type: "CLEAR_ORDINALS" })
-        setPage(1);
-        //  lookup()
-    };
-
-    const renderFooter = () => {
-        if (!isLoading) return null;
-        return (
-            <View style={styles.loading}>
-                <ActivityIndicator size="large" color="#0000ff" />
-            </View>
-        );
-    };
-
 
     const Item = (data: any) => {
         return <View style={styles.item}>
@@ -74,15 +58,10 @@ const Main = () => {
                     keyExtractor={(item: any) => item.id}
                     onEndReached={handleLoadMore}
                     onEndReachedThreshold={0.1}
-                    ListFooterComponent={renderFooter}
-                    refreshing={isRefreshing}
-                    onRefresh={handleRefresh}
                 />
             }
         </View>
     );
 }
-
-
 
 export default memo(Main)

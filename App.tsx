@@ -21,7 +21,7 @@ const App = () => {
           <NavigationContainer>
             <Stack.Navigator initialRouteName='Main' >
               <Stack.Screen name="Main" component={Main} options={{ headerShown: false }} />
-              <Stack.Screen name="Detail" component={OrdinalDetail} options={{ headerShown: false }} />
+              <Stack.Screen name="Detail" component={OrdinalDetail} />
             </Stack.Navigator>
           </NavigationContainer>
         </ThemeContext.Provider>

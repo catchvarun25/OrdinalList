@@ -1,13 +1,12 @@
-import React, { Suspense, lazy, memo, useCallback, useContext, useEffect, useMemo, useState } from "react"
+import React, { memo, useEffect, useState } from "react"
 import { useDispatch, useSelector } from 'react-redux';
-import { FlatList, Text, TextInput, View, Button, TouchableOpacity, ImageBackground, Image } from "react-native";
-import { styles } from "./styles";
+import { FlatList, View } from "react-native";
 import InscriptionDetailRow from "../../components/InscriptionDetailRow";
 import InscriptionLoader from "../../components/InscriptionLoader";
 
 const OrdinalDetail = ({ route }: any) => {
     const dispatch = useDispatch()
-    const [isContentTypeText, setIsContentTypeText] = useState(true);
+    const [isContentTypeText, setIsContentTypeText] = useState(false);
     const { inscriptionId, walletAddress } = route.params;
     const ordinalListDetail = useSelector((state: any) => state.ordinalList)
 
@@ -25,7 +24,7 @@ const OrdinalDetail = ({ route }: any) => {
 
         if (ordinalListDetail.data) {
             const contentType = ordinalListDetail.data.content_type;
-            if (contentType.startsWith("text")) {
+            if (contentType.startsWith("text/plain")) {
                 setIsContentTypeText(true)
             } else {
                 setIsContentTypeText(false)
@@ -37,7 +36,7 @@ const OrdinalDetail = ({ route }: any) => {
     return (
         <View>
             {ordinalListDetail &&
-                <View style={{ justifyContent: 'space-between' }}>
+                <>
                     <InscriptionLoader
                         url={`https://ord.xverse.app/content/${inscriptionId}`}
                         isContentTypeText={isContentTypeText}
@@ -49,7 +48,7 @@ const OrdinalDetail = ({ route }: any) => {
                         renderItem={({ item }: any) => <InscriptionDetailRow header={item.key} description={item.value} />}
                         keyExtractor={(item: any) => item.id}
                     />
-                </View>
+                </>
             }
         </View>
     );
