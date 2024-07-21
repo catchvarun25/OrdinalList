@@ -1,4 +1,4 @@
-package com.Xverse
+package com.xverse
 
 import android.app.Application
 import com.facebook.react.PackageList
